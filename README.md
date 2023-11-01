@@ -1,2 +1,2 @@
-# 2D_Shooter_EverStar
- 2D Shooter, learning purposes
+# 2D Shooter_EverStar
+ Shooter project. Learning purposes

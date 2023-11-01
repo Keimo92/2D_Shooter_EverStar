@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
 
 
+    public GameObject dialogCollider;
+
     public Text ammoText;
 
 
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject bulletImpact;
 
+    public GameObject keyNotFoundtext;
 
     public GameObject text;
   
@@ -62,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         text.SetActive(false);
 
-       
+       keyNotFoundtext.SetActive(false);
 
         ammoText.text = ammoCount.ToString();
 
@@ -181,6 +184,20 @@ public class PlayerMovement : MonoBehaviour
 
             collision.enabled = false;
         }
+
+        if (collision.gameObject.tag == "Dialog")
+        {
+            StartCoroutine(KeyNotFound());
+            keyNotFoundtext.SetActive(true);
+
+            
+            dialogCollider.SetActive(false);
+           
+
+   
+            
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -192,6 +209,8 @@ public class PlayerMovement : MonoBehaviour
             text.SetActive(true);
         }
 
+        
+
        
     }
 
@@ -201,5 +220,15 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(10);
 
         text.SetActive(false);
+        
     }
+
+    IEnumerator KeyNotFound()
+    {
+        yield return new WaitForSeconds(5);
+        keyNotFoundtext.SetActive(false);
+    }
+
+
+    
 }

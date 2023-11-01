@@ -6,8 +6,8 @@ public class KeyScript : MonoBehaviour
 {
 
     public GameObject door;
-   
 
+    public GameObject door2;
 
 
 
@@ -18,7 +18,7 @@ public class KeyScript : MonoBehaviour
 
         door.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-       
+        door2.gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
 
@@ -32,6 +32,8 @@ public class KeyScript : MonoBehaviour
 
 
             door.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+
+            door2.gameObject.GetComponent<BoxCollider2D>().enabled = true;
 
             Debug.Log("You picked up a " + name);
 

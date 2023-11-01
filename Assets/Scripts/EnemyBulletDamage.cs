@@ -7,6 +7,10 @@ public class EnemyBulletDamage : MonoBehaviour
 
     public int damage = 20;
 
+   public AudioSource audioSource;
+
+    public AudioClip clip;
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -16,6 +20,15 @@ public class EnemyBulletDamage : MonoBehaviour
             PlayerHealth.instance.playerHealth -= damage;
            
             Destroy(gameObject);
+        }
+
+
+        if (collision.collider.CompareTag("wall"))
+        {
+            audioSource.PlayOneShot(clip);
+
+            Destroy(gameObject,0.5f);
+
         }
     }
 }

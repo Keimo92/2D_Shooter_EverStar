@@ -11,6 +11,8 @@ TagManager:
   - Bullet
   - KeyDoor
   - Key
+  - Dialog
+  - wall
   layers:
   - Default
   - TransparentFX

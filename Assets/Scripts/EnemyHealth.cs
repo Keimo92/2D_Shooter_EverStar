@@ -68,6 +68,10 @@ public class EnemyHealth : MonoBehaviour
 
         enemyai.detectionRadius = 100;
         enemyai.shootRange = 10;
+
+       
+
+        
     }
 
 }
