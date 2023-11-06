@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerHealth : MonoBehaviour
     public int playerHealth;
     public int maxHealth = 100;
     public GameObject deadScreen;
+
+
+    
 
     public static PlayerHealth instance;
 
@@ -21,13 +25,18 @@ public class PlayerHealth : MonoBehaviour
     }
     void Start()
     {
-       
+      
+
+
+
+
         playerHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         healthText.text = playerHealth.ToString();
         if (playerHealth > maxHealth)
         {
@@ -38,7 +47,20 @@ public class PlayerHealth : MonoBehaviour
         {
             deadScreen.SetActive(true);
             PlayerMovement.instance.hasDied = true;
+            StartCoroutine(Mainmenu());
+
+            
+
+           
+
             
         }
     }
+
+    IEnumerator Mainmenu()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }

@@ -207,6 +207,8 @@ public class PlayerMovement : MonoBehaviour
 
             StartCoroutine(Dialog());
             text.SetActive(true);
+
+            dialogCollider.SetActive(false);
         }
 
         

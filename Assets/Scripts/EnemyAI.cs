@@ -138,9 +138,6 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    public void AttackPlayer()
-    {
-        
-    }
+   
 
 }

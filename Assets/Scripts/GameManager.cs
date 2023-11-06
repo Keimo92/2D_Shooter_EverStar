@@ -18,22 +18,19 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
 
-        
-
-        if (Input.GetKey(KeyCode.Escape))
+        if(PlayerHealth.instance.playerHealth == 0)
         {
             UnlockCursor();
         }
+        
+
+       
     }
 
 
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene("Test");
-    }
+  
 
     private void LockCursor()
     {
@@ -41,7 +38,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void UnlockCursor()
+    public void UnlockCursor()
     {
         PlayerMovement playerMove = GetComponent<PlayerMovement>();
 

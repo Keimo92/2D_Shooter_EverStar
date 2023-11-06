@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZoomOnTouch : MonoBehaviour
 {
+
+    public GameObject fadeIn;
 
     public Camera cam;
 
@@ -12,6 +15,16 @@ public class ZoomOnTouch : MonoBehaviour
     public float speed = 20;
 
     public Grid grid;
+
+    
+
+
+    public void Start()
+    {
+        
+        Animator animator  = GetComponent<Animator>();
+        fadeIn.SetActive(false);
+    }
 
     private void Update()
     {
@@ -25,6 +38,14 @@ public class ZoomOnTouch : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            fadeIn.SetActive(true);
+
+            Animator animator = GetComponent<Animator>();
+
+            animator.SetTrigger("FadeIn");
+
+            StartCoroutine(LoadScene());
+
             grid.gameObject.SetActive(false);
             
             cam.fieldOfView = 179;
@@ -34,6 +55,10 @@ public class ZoomOnTouch : MonoBehaviour
     }
 
 
-
-   
+    //IENumerator to change the scene to endText 
+   IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(8);
+        SceneManager.LoadScene("MainMenu");
+    }
 }
